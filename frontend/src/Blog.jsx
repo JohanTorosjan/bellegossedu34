@@ -10,7 +10,7 @@ export default function Blog() {
   useEffect(() => {
     fetch(`${API}/posts`)
       .then(res => res.json())
-      .then(data => setPosts(data))
+      .then(data => setPosts(data.reverse()))
   }, [])
 
   return (
@@ -19,7 +19,7 @@ export default function Blog() {
             <h1 className="blog-title-text">Mon blog</h1> 
             <p className="blog-title-description">
                 Bienvenue sur mon blog de bad bitch !
-                Vous pouvez retrouver toutes mes actualités en temps réel.
+                Vous pouvez consulter toutes mes actualités en temps réel.
             </p>
         </div>
         <div className="blog-content-cards">

@@ -1,0 +1,58 @@
+/* =============================================
+   ANIMAL CARD
+   ============================================= */
+.animals-div {
+  background: #fff;
+  border: 2px solid #1a0a14;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 4px 4px 0px var(--accent, --accent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.animals-div:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--blog-accent, --accent);
+}
+
+/* =============================================
+   PHOTO — hauteur variable = effet moodboard
+   ============================================= */
+.animals-photo {
+  width: 100%;
+  overflow: hidden;
+  background: #f0ede8;
+  border-bottom: 2px solid #1a0a14;
+}
+
+.animals-photo img {
+  width: 100% !important;
+  height: auto;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.animals-div:hover .animals-photo img {
+  transform: scale(1.05);
+}
+
+/* =============================================
+   TEXTE
+   ============================================= */
+.animals-div > .animals-description {
+  font-size: clamp(0.78rem, 2dvw, 0.88rem);
+  line-height: 1.5;
+  color: #1a0a14;
+  padding: clamp(8px, 2dvw, 12px) clamp(10px, 3dvw, 14px) 4px;
+}
+
+.animals-photo-date {
+  font-size: 0.68rem;
+  color: var(--blog-accent, #e91e8c);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 4px clamp(10px, 3dvw, 14px) clamp(8px, 2dvw, 12px);
+}

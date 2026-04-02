@@ -25,6 +25,18 @@ header {
   /* font-size: clamp(1.2rem, 4dvw, 1.8rem); */
   font-weight: normal;
   letter-spacing: 0.02em;
+    background: linear-gradient(
+    105deg,
+    var(--blog-dark) 0%,
+    var(--blog-accent) 60%,
+    var(--blog-accent-2) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+    font-style: italic;
+  font-weight: 900;
+
 }
 
 .header-right .title a {

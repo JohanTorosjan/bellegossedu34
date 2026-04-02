@@ -28,7 +28,7 @@
   --spacing-lg: clamp(24px, 6dvw, 48px);
 
   /* Layout */
-  --max-width: 90dvw;
+  --max-width: 80dvw;
   --radius: 4px;
 }
 

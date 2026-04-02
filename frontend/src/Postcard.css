@@ -10,7 +10,7 @@
   flex-direction: column;
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-
+border-radius: 10px;
   /* Ombre décalée façon stamp */
   box-shadow: 4px 4px 0px #e91e8c;
 }
@@ -58,7 +58,6 @@
    ============================================= */
 .postdard-photo {
   width: 100%;
-  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #f0ede8;
   position: relative;
@@ -67,7 +66,6 @@
 .postdard-photo img {
   width: 100% !important;
   height: 100%;
-  object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
 }
