@@ -2,7 +2,7 @@
    HEADER
    ============================================= */
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 100;
   width: 100dvw;
@@ -15,6 +15,7 @@ header {
   justify-content: space-between;
   padding: 0 var(--spacing-md);
   gap: var(--spacing-sm);
+  /* opacity: 0.8; */
 }
 
 /* =============================================
@@ -22,10 +23,9 @@ header {
    ============================================= */
 .header-right .title {
   font-family: var(--font-display);
-  /* font-size: clamp(1.2rem, 4dvw, 1.8rem); */
   font-weight: normal;
   letter-spacing: 0.02em;
-    background: linear-gradient(
+  background: linear-gradient(
     105deg,
     var(--blog-dark) 0%,
     var(--blog-accent) 60%,
@@ -34,9 +34,8 @@ header {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-    font-style: italic;
+  font-style: italic;
   font-weight: 900;
-
 }
 
 .header-right .title a {
@@ -49,7 +48,7 @@ header {
 }
 
 /* =============================================
-   NAVIGATION
+   NAVIGATION DESKTOP
    ============================================= */
 .header-left nav {
   display: flex;
@@ -60,10 +59,8 @@ header {
 
 .header-left nav a {
   font-family: var(--font-body);
-  /* font-size: clamp(0.8rem, 2.5dvw, 0.95rem); */
   color: var(--color-text);
   text-decoration: none;
-  /* text-transform: lowercase; */
   letter-spacing: 0.04em;
   padding-bottom: 2px;
   border-bottom: 1px solid transparent;
@@ -77,22 +74,136 @@ header {
 }
 
 /* =============================================
-   RESPONSIVE — petit téléphone
+   BURGER BUTTON
    ============================================= */
-@media (max-width: 480px) {
-  header {
-    flex-direction: column;
-    height: auto;
-    padding: var(--spacing-sm) var(--spacing-md);
-    gap: var(--spacing-sm);
-  }
-
-  .header-left nav {
-   width: 80dvw;
-   justify-content: center;
-
-  }
-
+.burger {
+  display: none; /* masqué sur desktop */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 200;
+  flex-shrink: 0;
 }
 
+.burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+  transform-origin: center;
+}
 
+/* Animation croix */
+.burger--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.burger--open span:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.burger--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =============================================
+   OVERLAY (fond sombre derrière le menu)
+   ============================================= */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 110;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+.mobile-overlay--visible {
+  opacity: 1;
+}
+
+/* =============================================
+   NAVIGATION MOBILE (drawer)
+   ============================================= */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: var(--header-height);
+  right: 0;
+  width:100%;
+  height: calc(100dvh - var(--header-height));
+  background-color: var(--color-header-bg);
+  border-left: 1px solid var(--color-border);
+  z-index: 120;
+  padding: var(--spacing-md);
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav--open {
+  transform: translateX(0);
+}
+
+.mobile-nav a {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: color 0.2s ease;
+}
+
+.mobile-nav a:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+  color: var(--color-accent);
+}
+
+/* Empêche le scroll du body quand le menu est ouvert */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* =============================================
+   RESPONSIVE — mobile
+   ============================================= */
+@media (max-width: 480px) {
+  .header-left {
+    display: none; /* cache la nav desktop */
+  }
+
+  .burger {
+    display: flex; /* affiche le burger */
+  }
+
+  .mobile-overlay {
+    display: block;
+    pointer-events: none;
+  }
+
+  .mobile-overlay--visible {
+    pointer-events: auto;
+  }
+
+  .mobile-nav {
+    display: flex;
+  }
+}

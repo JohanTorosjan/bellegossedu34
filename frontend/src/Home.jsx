@@ -1,7 +1,7 @@
 // src/pages/Home.jsx
 import { useEffect, useState } from "react"
-
-const images = Array.from({ length: 16 }, (_, i) => new URL(`./assets/${i + 1}.jpg`, import.meta.url).href)
+import './Home.css'
+const images = Array.from({ length: 13 }, (_, i) => new URL(`./assets/${i + 4}.jpg`, import.meta.url).href)
 
 export default function Home() {
   const [current, setCurrent] = useState(0)
@@ -14,7 +14,7 @@ export default function Home() {
   }, [])
 
   return (
-    
+
     <div style={{ position: "relative", width: "100vw", height: "100vh", overflow: "hidden" }}>
       {images.map((src, i) => (
         <img
@@ -31,6 +31,11 @@ export default function Home() {
           }}
         />
       ))}
+
+
+      <button className="hello-button">
+        💐 Voir mon blog 💐
+      </button>
     </div>
   )
 }

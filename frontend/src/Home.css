@@ -1,0 +1,35 @@
+.hello-button {
+  position: absolute;
+  bottom: 5dvh;
+  left: 50%;
+  width: clamp(180px, 40dvw, 340px);
+  height: clamp(48px, 8dvh, 72px);
+  transform: translateX(-50%);
+opacity: 0.9;
+  background: var(--color-title);
+  border: 2.5px solid var(--color-title);
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px var(--color-accent);
+
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 3dvw, 1.1rem);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.05em;
+  color: #fff;
+
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.hello-button:hover {
+  background: #fff;
+  color: var(--color-title);
+  transform: translateX(-50%) translate(-2px, -2px);
+  box-shadow: 7px 7px 0px var(--color-title);
+}
+
+.hello-button:active {
+  transform: translateX(-50%) translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--color-accent);
+}
