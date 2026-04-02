@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import File, UploadFile
+from fastapi import File, UploadFile, Form
 import base64
 from pydantic import BaseModel
 import mysql.connector
@@ -10,7 +10,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:80"],
+    allow_origins=["http://localhost:5173", "http://localhost:80", "http://localhost"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -100,7 +100,8 @@ def get_animals():
     return rows
 
 @app.post("/animals")
-def create_animal(description: str, photo: UploadFile = File(...)):
+def create_animal(description: str = Form(...), photo: UploadFile = File(...)):
+    print("iCIIIIIIIII")
     photo_bytes = photo.file.read()
     conn = get_db()
     cursor = conn.cursor()
@@ -133,7 +134,7 @@ def get_posts():
     return rows
 
 @app.post("/posts")
-def create_post(title: str, description: str, photo: UploadFile = File(...)):
+def create_post(title: str = Form(...), description: str = Form(...), photo: UploadFile = File(...)):
     photo_bytes = photo.file.read()
     conn = get_db()
     cursor = conn.cursor()

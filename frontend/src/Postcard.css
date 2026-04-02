@@ -1,0 +1,98 @@
+/* =============================================
+   POSTCARD — boss lady kitsch
+   ============================================= */
+.postcard-div {
+  background: #fff;
+  border: 2px solid #1a0a14;
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* Ombre décalée façon stamp */
+  box-shadow: 4px 4px 0px #e91e8c;
+}
+
+.postcard-div:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #e91e8c;
+}
+
+/* =============================================
+   HEADER CARD
+   ============================================= */
+.postcard-header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: clamp(10px, 3dvw, 14px) clamp(12px, 3dvw, 16px);
+  background: #1a0a14;
+  border-bottom: 2px solid #e91e8c;
+}
+
+.postcard-title {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 3dvw, 1.1rem);
+  font-weight: bold;
+  font-style: italic;
+  color: #fff;
+  flex: 1;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.postcard-date {
+  font-size: 0.7rem;
+  color: #e91e8c;
+  white-space: nowrap;
+  font-family: var(--font-body);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* =============================================
+   PHOTO
+   ============================================= */
+.postdard-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #f0ede8;
+  position: relative;
+}
+
+.postdard-photo img {
+  width: 100% !important;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.postcard-div:hover .postdard-photo img {
+  transform: scale(1.04);
+}
+
+/* =============================================
+   DESCRIPTION
+   ============================================= */
+.postcard-description {
+  padding: clamp(10px, 3dvw, 14px) clamp(12px, 3dvw, 16px);
+  flex: 1;
+  border-top: 1px dashed #e91e8c;
+}
+
+.postcard-desdcription-text {
+  font-size: clamp(0.8rem, 2dvw, 0.9rem);
+  line-height: 1.55;
+  color: #1a0a14;
+
+  /* 3 lignes max avec ellipsis */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

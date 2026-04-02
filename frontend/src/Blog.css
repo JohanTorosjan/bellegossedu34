@@ -1,0 +1,71 @@
+/* =============================================
+   BLOG — variables locales (héritent de App.css)
+   ============================================= */
+:root {
+  --blog-accent: #e91e8c;
+  --blog-accent-2: #ff6b6b;
+  --blog-gold: #f5c518;
+  --blog-dark: #1a0a14;
+}
+
+/* =============================================
+   LAYOUT BLOG
+   ============================================= */
+.blog-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  width: 100%;
+}
+
+/* =============================================
+   INTRO BLOC
+   ============================================= */
+.intro-blog {
+  border-left: 4px solid var(--blog-accent);
+  padding-left: var(--spacing-md);
+  position: relative;
+}
+
+.blog-title-text {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 8dvw, 3.5rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1.05;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+
+  background: linear-gradient(
+    105deg,
+    var(--blog-dark) 0%,
+    var(--blog-accent) 60%,
+    var(--blog-accent-2) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.blog-title-description {
+  font-size: clamp(0.85rem, 2.5dvw, 1rem);
+  color: var(--color-muted);
+  margin-top: var(--spacing-sm);
+  max-width: 50ch;
+  line-height: 1.6;
+}
+
+/* =============================================
+   GRILLE DE CARDS
+   ============================================= */
+.blog-content-cards {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .blog-content-cards {
+    grid-template-columns: 1fr;
+  }
+}
