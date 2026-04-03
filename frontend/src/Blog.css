@@ -16,8 +16,8 @@
     flex-direction: column;
     gap: var(--spacing-lg);
     width: 100%;
-    padding-top: var(--header-height);
-        padding-bottom:4dvh;
+    padding-top: 12dvh;
+        padding-bottom:10dvh;
 
     padding-left: 10dvw;
     padding-right: 10dvw;

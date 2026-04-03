@@ -6,9 +6,11 @@
   flex-direction: column;
   gap: var(--spacing-lg);
   width: 100%;
-    padding-top: var(--header-height);
+    padding-top: 13vh;
     padding-left: 10dvw;
     padding-right: 10dvw;
+            padding-bottom:10dvh;
+
 
 }
 

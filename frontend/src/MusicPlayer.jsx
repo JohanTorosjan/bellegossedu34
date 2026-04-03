@@ -11,7 +11,7 @@ const MUSIC_FILES = [
 
         "/music/monbb.mp3",
 
-          "/music/zoutramzou.mp3",
+          "/music/zoumtramzou.mp3",
 
   // Ajoute autant de pistes que tu veux...
 ];

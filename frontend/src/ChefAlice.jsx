@@ -1,8 +1,9 @@
-import { useState } from "react"
-
+// src/pages/ChefAlice.jsx
+import { useState, useEffect } from "react"
+import './ChefAlice.css'
 const API = "http://localhost:8000"
 
-function AnimalForm() {
+function AnimalForm({ onCreated }) {
   const [description, setDescription] = useState("")
   const [photo, setPhoto] = useState(null)
   const [msg, setMsg] = useState("")
@@ -16,11 +17,13 @@ function AnimalForm() {
     setMsg(data.message)
     setDescription("")
     setPhoto(null)
+    onCreated()
   }
 
   return (
+
     <div>
-      <h2>Ajouter un animal</h2>
+      <h2>Ajouter une photo trop mignonne</h2>
       <input type="file" accept="image/*" onChange={e => setPhoto(e.target.files[0])} />
       <textarea placeholder="Description" value={description} onChange={e => setDescription(e.target.value)} />
       <button onClick={submit} disabled={!photo || !description}>Ajouter</button>
@@ -29,7 +32,7 @@ function AnimalForm() {
   )
 }
 
-function PostForm() {
+function PostForm({ onCreated }) {
   const [form, setForm] = useState({ title: "", description: "" })
   const [photo, setPhoto] = useState(null)
   const [msg, setMsg] = useState("")
@@ -44,6 +47,7 @@ function PostForm() {
     setMsg(json.message)
     setForm({ title: "", description: "" })
     setPhoto(null)
+    onCreated()
   }
 
   return (
@@ -58,13 +62,64 @@ function PostForm() {
   )
 }
 
-export default function ChefAlice() {
+function AnimalList({ animals, onDelete }) {
   return (
     <div>
-      <h1>Chef Alice 👩‍🍳</h1>
-      <AnimalForm />
+      <h2>Mokmok & rouet existants</h2>
+      {animals.map(a => (
+        <div key={a.id} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <span>{a.description.slice(0, 40)}...</span>
+          <button onClick={() => onDelete("animals", a.id)}>Supprimer</button>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function PostList({ posts, onDelete }) {
+  return (
+    <div>
+      <h2>Posts existants</h2>
+      {posts.map(p => (
+        <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <span>{p.title}</span>
+          <button onClick={() => onDelete("posts", p.id)}>Supprimer</button>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+export default function ChefAlice() {
+  const [animals, setAnimals] = useState([])
+  const [posts, setPosts] = useState([])
+
+  async function fetchAll() {
+    const [a, p] = await Promise.all([
+      fetch(`${API}/animals`).then(r => r.json()),
+      fetch(`${API}/posts`).then(r => r.json()),
+    ])
+    setAnimals(a)
+    setPosts(p)
+  }
+
+  useEffect(() => { fetchAll() }, [])
+
+  async function handleDelete(table, id) {
+    await fetch(`${API}/${table}/${id}`, { method: "DELETE" })
+    fetchAll()
+  }
+
+  return (
+    <div className="chefalice-page">
+      <h1>Chef Alice 🫡 </h1>
+      <AnimalForm onCreated={fetchAll} />
       <hr />
-      <PostForm />
+      <PostForm onCreated={fetchAll} />
+      <hr />
+      <AnimalList animals={animals} onDelete={handleDelete} />
+      <hr />
+      <PostList posts={posts} onDelete={handleDelete} />
     </div>
   )
 }
