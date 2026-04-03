@@ -5,6 +5,8 @@ import Animals from "./Animals"
 import Blog from "./Blog"
 import Header from "./Header"
 import Home from "./Home"
+import MusicPlayer from "./MusicPlayer"
+import Footer from "./Footer"
 import './App.css'
 
 export default function App() {
@@ -21,9 +23,12 @@ export default function App() {
         </Routes>
         </main>
         <footer className="app-footer">
-        
+        <Footer />
+
         </footer>
       </div>
+       <MusicPlayer />  {/* ← fixe en bas à droite */}
+
     </BrowserRouter>
   )
 }
