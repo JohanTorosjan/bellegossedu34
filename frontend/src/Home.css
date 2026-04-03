@@ -5,7 +5,7 @@
   width: clamp(180px, 40dvw, 340px);
   height: clamp(48px, 8dvh, 72px);
   transform: translateX(-50%);
-opacity: 0.9;
+    opacity: 0.9;
   background: var(--color-title);
   border: 2.5px solid var(--color-title);
   border-radius: 10px;
@@ -32,4 +32,7 @@ opacity: 0.9;
 .hello-button:active {
   transform: translateX(-50%) translate(2px, 2px);
   box-shadow: 2px 2px 0px var(--color-accent);
+}
+@media (max-width: 480px) {
+   .hello-button{ width: 60dvw;}
 }

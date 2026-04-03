@@ -1,6 +1,8 @@
 // src/pages/Home.jsx
 import { useEffect, useState } from "react"
 import './Home.css'
+import { Link } from "react-router-dom";
+
 const images = Array.from({ length: 13 }, (_, i) => new URL(`./assets/${i + 4}.jpg`, import.meta.url).href)
 
 export default function Home() {
@@ -33,9 +35,11 @@ export default function Home() {
       ))}
 
 
-      <button className="hello-button">
-        💐 Voir mon blog 💐
-      </button>
+<Link to="/blog">
+  <button className="hello-button">
+    💐 Voir mon blog 💐
+  </button>
+</Link>
     </div>
   )
 }
