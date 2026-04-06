@@ -1,7 +1,7 @@
 // src/pages/ChefAlice.jsx
 import { useState, useEffect } from "react"
 import './ChefAlice.css'
-const API = "http://localhost:8000"
+const API = "https://api.bellegossedu34.fr"
 
 function AnimalForm({ onCreated }) {
   const [description, setDescription] = useState("")

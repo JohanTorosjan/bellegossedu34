@@ -1,9 +1,40 @@
 version: "3.9"
 
 services:
+  frontend:
+    build: ./frontend
+    networks:
+      - app-network
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bellegosse-frontend.rule=Host(`bellegossedu34.fr`)"
+      - "traefik.http.routers.bellegosse-frontend.entrypoints=websecure"
+      - "traefik.http.routers.bellegosse-frontend.tls.certresolver=letsencrypt"
+      - "traefik.http.services.bellegosse-frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.bellegosse-frontend-http.rule=Host(`bellegossedu34.fr`)"
+      - "traefik.http.routers.bellegosse-frontend-http.entrypoints=web"
+      - "traefik.http.routers.bellegosse-frontend-http.middlewares=redirect-to-https"
+
+  backend:
+    build: ./backend
+    env_file: .env
+    networks:
+      - app-network
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bellegosse-backend.rule=Host(`api.bellegossedu34.fr`)"
+      - "traefik.http.routers.bellegosse-backend.entrypoints=websecure"
+      - "traefik.http.routers.bellegosse-backend.tls.certresolver=letsencrypt"
+      - "traefik.http.services.bellegosse-backend.loadbalancer.server.port=8000"
+      - "traefik.http.routers.bellegosse-backend-http.rule=Host(`api.bellegossedu34.fr`)"
+      - "traefik.http.routers.bellegosse-backend-http.entrypoints=web"
+      - "traefik.http.routers.bellegosse-backend-http.middlewares=redirect-to-https"
+
   db:
     image: mysql:8.0
-    restart: always
+    restart: unless-stopped
     env_file: .env
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -12,35 +43,12 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
-      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql  # ← ajoute ça
-
-    ports:
-      - "3306:3306"
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-  backend:
-    build: ./backend
-    restart: always
-    env_file: .env
-    ports:
-      - "8000:8000"
-    depends_on:
-      db:
-        condition: service_healthy
-    volumes:
-      - ./backend:/app
-
-  frontend:
-    build: ./frontend
-    restart: always
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
+    networks:
+      - app-network
 
 volumes:
   db_data:
+
+networks:
+  app-network:
+    external: true
