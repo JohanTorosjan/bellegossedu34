@@ -44,7 +44,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     networks:
-      - speech-synthesis_app-network
+      - app-network
 
 volumes:
   db_data:
@@ -52,3 +52,4 @@ volumes:
 networks:
   app-network:
     external: true
+    name: speech-synthesis_app-network
