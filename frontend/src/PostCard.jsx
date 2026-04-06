@@ -1,5 +1,5 @@
 // src/components/PostCard.jsx
-import './PostCard.css'
+import './Postcard.css'
 export default function PostCard({ post }) {
   return (
     <div className="postcard-div">
