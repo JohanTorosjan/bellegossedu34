@@ -1,0 +1,319 @@
+/* =============================================
+   GOLDEN BOOK — variables locales
+   ============================================= */
+:root {
+  --gold: #c9a84c;
+  --gold-light: #f0d98a;
+  --gold-dark: #8a6820;
+}
+
+/* =============================================
+   PAGE
+   ============================================= */
+.goldenbook-page {
+    padding-top: 13vh;
+    padding-left: 10dvw;
+    padding-right: 10dvw;
+            padding-bottom:10dvh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  width: 100%;
+}
+
+/* =============================================
+   HEADER
+   ============================================= */
+.goldenbook-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg) var(--spacing-md);
+  border: 2px solid var(--gold);
+  border-radius: 2px;
+  position: relative;
+  background: linear-gradient(160deg, #fffdf5 0%, var(--color-bg) 100%);
+}
+
+/* Coins décoratifs */
+.goldenbook-header::before,
+.goldenbook-header::after {
+  content: '✦';
+  position: absolute;
+  color: var(--gold);
+  font-size: 1rem;
+  top: 8px;
+}
+.goldenbook-header::before { left: 12px; }
+.goldenbook-header::after  { right: 12px; }
+
+.goldenbook-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 8dvw, 4rem);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  background: linear-gradient(120deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.goldenbook-subtitle {
+  font-size: clamp(0.85rem, 2.5dvw, 0.95rem);
+  color: var(--color-accent);
+  font-style: italic;
+  max-width: 36ch;
+}
+
+/* =============================================
+   BOUTON OUVRIR MODALE
+   ============================================= */
+.goldenbook-open-btn {
+  margin-top: var(--spacing-sm);
+  padding: 12px 28px;
+  background: var(--color-title);
+  border: 2px solid var(--gold-dark);
+  border-radius: 2px;
+  box-shadow: 4px 4px 0px var(--gold-dark);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 2.5dvw, 1rem);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.goldenbook-open-btn:hover {
+  background: #fff;
+  color: var(--gold-dark);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--gold-dark);
+}
+
+.goldenbook-open-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--gold-dark);
+}
+
+/* =============================================
+   OVERLAY & MODALE
+   ============================================= */
+.goldenbook-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(74, 68, 83, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--spacing-md);
+}
+
+.goldenbook-modal {
+  background: #fffdf5;
+  border: 2px solid var(--gold);
+  border-radius: 2px;
+  box-shadow: 8px 8px 0px var(--gold-dark);
+  padding: clamp(20px, 5dvw, 36px);
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 4dvw, 1.4rem);
+  font-style: italic;
+  font-weight: 900;
+  color: var(--gold-dark);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+/* =============================================
+   INPUTS MODALE
+   ============================================= */
+.goldenbook-input,
+.goldenbook-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--gold-light);
+  border-radius: 2px;
+  background: #fff;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.goldenbook-input:focus,
+.goldenbook-textarea:focus {
+  border-color: var(--gold);
+}
+
+.goldenbook-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.goldenbook-confirm {
+  font-size: 0.85rem;
+  color: var(--gold-dark);
+  font-style: italic;
+  text-align: center;
+}
+
+/* =============================================
+   ACTIONS MODALE
+   ============================================= */
+.modal-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.goldenbook-submit-btn {
+  padding: 9px 20px;
+  background: var(--color-title);
+  border: 2px solid var(--color-title);
+  border-radius: 2px;
+  box-shadow: 3px 3px 0px var(--gold-dark);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: italic;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.goldenbook-submit-btn:hover:not(:disabled) {
+  background: #fff;
+  color: var(--color-title);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px var(--color-title);
+}
+
+.goldenbook-submit-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.goldenbook-cancel-btn {
+  padding: 9px 16px;
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  border-radius: 2px;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.goldenbook-cancel-btn:hover {
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+
+/* =============================================
+   ENTRIES — liste des messages
+   ============================================= */
+.goldenbook-entries {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.goldenbook-entry {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+  padding: clamp(14px, 3dvw, 20px);
+  border: 1.5px solid var(--gold-light);
+  border-left: 4px solid var(--gold);
+  background: linear-gradient(100deg, #fffdf5 0%, #fff 100%);
+  border-radius: 2px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.goldenbook-entry:hover {
+  transform: translateX(3px);
+  box-shadow: -4px 0 0 var(--gold);
+}
+
+.entry-number {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 4dvw, 1.8rem);
+  font-style: italic;
+  font-weight: 900;
+  color: var(--gold-light);
+  line-height: 1;
+  min-width: 2.5ch;
+  flex-shrink: 0;
+}
+
+.entry-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.entry-message {
+  font-size: clamp(0.9rem, 2.5dvw, 1rem);
+  line-height: 1.6;
+  color: var(--color-text);
+  font-style: italic;
+  word-break: break-word;
+}
+
+.entry-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.entry-author {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+}
+
+.entry-date {
+  font-size: 0.72rem;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 480px) {
+    .goldenbook-entries{
+        flex-direction: column;
+    }
+  .goldenbook-entry {
+    flex-direction: column;
+    gap: 6px;
+
+  }
+
+  .entry-number {
+    font-size: 1rem;
+  }
+}

@@ -151,3 +151,53 @@ def delete_post(post_id: int):
     conn.commit()
     conn.close()
     return {"message": "Post supprimé ✅"}
+
+
+
+@app.get("/createGoldenBook")
+def create_golden_book():
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS golden_book (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            author VARCHAR(100) NOT NULL,
+            message TEXT NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+    conn.commit()
+    conn.close()
+    return {"message": "Table golden_book créée ✅"}
+
+class GoldenBookEntry(BaseModel):
+    author: str
+    message: str
+
+
+@app.get("/golden-book")
+def get_golden_book():
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM golden_book ORDER BY created_at DESC")
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
+
+@app.post("/golden-book")
+def create_golden_book_entry(entry: GoldenBookEntry):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO golden_book (author, message) VALUES (%s, %s)", (entry.author, entry.message))
+    conn.commit()
+    conn.close()
+    return {"message": "Message ajouté ✅"}
+
+@app.delete("/golden-book/{entry_id}")
+def delete_golden_book_entry(entry_id: int):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM golden_book WHERE id = %s", (entry_id,))
+    conn.commit()
+    conn.close()
+    return {"message": "Message supprimé ✅"}

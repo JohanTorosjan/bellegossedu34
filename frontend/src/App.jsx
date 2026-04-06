@@ -8,6 +8,8 @@ import Home from "./Home"
 import MusicPlayer from "./MusicPlayer"
 import Footer from "./Footer"
 import './App.css'
+import GoldenBook from "./GoldenBook"
+
 
 export default function App() {
   return (
@@ -20,6 +22,7 @@ export default function App() {
           <Route path="/animals" element={<Animals />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/chefalice" element={<ChefAlice />} />
+          <Route path="/golden-book" element={<GoldenBook />} />
         </Routes>
         </main>
         <footer className="app-footer">

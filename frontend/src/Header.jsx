@@ -60,6 +60,11 @@ export default function Header() {
         <Link to="/animals" className={location.pathname === "/animals" ? "active" : ""}>
           Mokmok & Pirouette
         </Link>
+        <Link to="/golden-book" className={location.pathname === "/golden-book" ? "active" : ""}>
+         <p className="golden-book-header">🎁 25 ans golden book 🎁 </p> 
+        </Link>
+           
+
       </nav>
     </header>
   )
