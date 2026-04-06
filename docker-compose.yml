@@ -44,7 +44,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     networks:
-      - app-network
+      - speech-synthesis_app-network
 
 volumes:
   db_data:
