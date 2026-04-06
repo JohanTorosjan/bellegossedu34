@@ -32,6 +32,12 @@
   --radius: 4px;
 }
 
+:root {
+  --gold: #c9a84c;
+  --gold-light: #f0d98a;
+  --gold-dark: #8a6820;
+}
+
 /* =============================================
    RESET & BASE
    ============================================= */
@@ -106,4 +112,8 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+.golden-book-header{
+  color: var(--gold);
 }

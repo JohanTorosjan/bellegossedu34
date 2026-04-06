@@ -11,7 +11,7 @@ export default function Footer() {
       <nav className="footer-nav">
         <Link to="/blog">blog</Link>
         <Link to="/animals">mokmok & pirouette</Link>
-        <Link to="/golden-book"> 🎁 25 ans golden book 🎁 </Link>
+        <Link to="/golden-book"> <p className='golden-book-header'>25 ans golden book 🎁 🎉</p> </Link>
       </nav>
     </div>
   )

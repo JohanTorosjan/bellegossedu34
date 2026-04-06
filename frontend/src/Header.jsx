@@ -61,7 +61,7 @@ export default function Header() {
           Mokmok & Pirouette
         </Link>
         <Link to="/golden-book" className={location.pathname === "/golden-book" ? "active" : ""}>
-         <p className="golden-book-header">🎁 25 ans golden book 🎁 </p> 
+         <p className="golden-book-header">25 ans golden book 🎁 🎉 </p> 
         </Link>
            
 

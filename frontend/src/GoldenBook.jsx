@@ -38,7 +38,7 @@ export default function GoldenBook() {
         <h1 className="goldenbook-title">25 Ans Golden Book</h1>
         <p className="goldenbook-subtitle"> Un petit message pour notre star 💋</p>
         <button className="goldenbook-open-btn" onClick={() => setOpen(true)}>
-          Laisser un message
+        💐 Laisser un message 💐
         </button> 
       </div>
 
