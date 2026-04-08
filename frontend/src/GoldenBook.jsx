@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react"
 import './GoldenBook.css'
 
-const API = "http://37.59.118.12:8001"
+const API = "https://api.bellegossedu34.fr"
 
 export default function GoldenBook() {
   const [entries, setEntries] = useState([])

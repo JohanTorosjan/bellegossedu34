@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import PostCard from "./PostCard"
 import './Blog.css'
-const API = "http://37.59.118.12:8001"
+const API = "https://api.bellegossedu34.fr"
 
 export default function Blog() {
   const [posts, setPosts] = useState([])

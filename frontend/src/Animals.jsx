@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import AnimalCard from "./AnimalCard"
 import './Animals.css'
 
-const API = "http://37.59.118.12:8001"
+const API = "https://api.bellegossedu34.fr"
 
 export default function Animals() {
   const [animals, setAnimals] = useState([])
