@@ -90,7 +90,9 @@ border-radius: 10px;
 
   /* 3 lignes max avec ellipsis */
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  /* -webkit-line-clamp: 3; */
   -webkit-box-orient: vertical;
-  overflow: hidden;
+  overflow: scroll;
+  white-space: pre-wrap;
+
 }
